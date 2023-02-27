@@ -8,7 +8,6 @@ import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.domain.usecase.FoodDetailUseCase
 import com.asnk.fdcentral.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject

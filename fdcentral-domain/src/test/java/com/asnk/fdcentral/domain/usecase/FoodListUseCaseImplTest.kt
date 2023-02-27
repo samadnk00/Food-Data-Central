@@ -36,11 +36,14 @@ class FoodListUseCaseImplTest {
 
     @Test
     fun `Given Foods When UseCase fetchFoods returns Success`() = runBlocking {
+
         //GIVEN
         val inputFlow = flowOf(Output.success(getDummyFoods()))
         Mockito.`when`(foodsRepository.fetchFoods()).thenReturn(inputFlow)
+
         //WHEN
         val output = foodUseCase.execute().toList()
+
         //THEN
         assert(output[0].data?.size == 1)
     }

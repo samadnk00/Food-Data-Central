@@ -18,35 +18,15 @@ import com.asnk.fdcentral.ui.widgets.setOnSafeClickListener
 class FoodAdapter(
     private val list: ArrayList<FoodEntry>,
     private val onStarClick: (details: FoodEntry, view: View) -> Unit
-) : RecyclerView.Adapter<FoodAdapter.StarHolder>() {
+) : RecyclerView.Adapter<FoodAdapter.FoodHolder>() {
 
-    /**
-     * RecyclerView ViewHolder to display a Food item.
-     *
-     * @property binding the binding class item layout.
-     */
-    inner class StarHolder(private val binding: ItemFoodBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        /**
-         * Method to bind data to layout.
-         */
-        fun bind(item: FoodEntry) {
-            binding.item = item
-            binding.position = adapterPosition
-            binding.root.setOnSafeClickListener {
-                onStarClick.invoke(item, binding.profPic)
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StarHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemFoodBinding.inflate(inflater, parent, false)
-        return StarHolder(binding)
+        return FoodHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: StarHolder, position: Int) {
+    override fun onBindViewHolder(holder: FoodHolder, position: Int) {
         holder.bind(list[position])
     }
 
@@ -59,5 +39,25 @@ class FoodAdapter(
         list.clear()
         list.addAll(newList)
         notifyItemRangeChanged(0, list.size)
+    }
+
+    /**
+     * RecyclerView ViewHolder to display a Food item.
+     *
+     * @property binding the binding class item layout.
+     */
+    inner class FoodHolder(private val binding: ItemFoodBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        /**
+         * Method to bind data to layout.
+         */
+        fun bind(item: FoodEntry) {
+            binding.item = item
+            binding.position = adapterPosition
+            binding.root.setOnSafeClickListener {
+                onStarClick.invoke(item, binding.profPic)
+            }
+        }
     }
 }

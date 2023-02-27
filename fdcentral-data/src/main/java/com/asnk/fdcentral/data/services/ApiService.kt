@@ -7,7 +7,6 @@ import com.asnk.fdcentral.domain.model.FoodEntry
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 /**
  * Retrofit API Service

@@ -41,33 +41,42 @@ class FoodDataCentralRemoteDataSourceTest {
 
     @Test
     fun `Given Foods When fetchFoods returns Success`() = runBlocking {
+
         //GIVEN
         val givenFoods = getDummyFoods()
         Mockito.`when`(profService.getFoods()).thenReturn(Response.success(givenFoods))
+
         //WHEN
         val fetchedFoods = foodsRemoteDataSource.fetchFoods()
+
         //THEN
         assert(fetchedFoods.data?.size == givenFoods.size)
     }
 
     @Test
     fun `Given Foods When fetchFoods returns Error`() = runBlocking {
+
         //GIVEN
         val mockitoException = MockitoException("Unknown Error")
         Mockito.`when`(profService.getFoods()).thenThrow(mockitoException)
+
         //WHEN
         val fetchedFoods = foodsRemoteDataSource.fetchFoods()
+
         //THEN
         assert(fetchedFoods.message == "Unknown Error")
     }
 
     @Test
     fun `Given Foods When fetchFoods returns Server Error`() = runBlocking {
+
         //GIVEN
         Mockito.`when`(profService.getFoods())
             .thenReturn(Response.error(500, "".toResponseBody()))
+
         //WHEN
         val fetchedFoods =foodsRemoteDataSource.fetchFoods()
+
         //THEN
         assert(fetchedFoods.message == "Unknown Error")
     }
@@ -75,33 +84,42 @@ class FoodDataCentralRemoteDataSourceTest {
 
     @Test
     fun `Given FoodDetail When fetchFoodDetail returns Success`() = runBlocking {
+
         //GIVEN
         val givenFoodDetail = getDummyFoodDetail()
         Mockito.`when`(profService.getFoodDetail(1)).thenReturn(Response.success(givenFoodDetail))
+
         //WHEN
         val fetchedFoodDetail = foodsRemoteDataSource.fetchFoodDetail(1)
+
         //THEN
         assert(fetchedFoodDetail.data == givenFoodDetail)
     }
 
     @Test
     fun `Given FoodDetail When fetchFoodDetail returns Error`() = runBlocking {
+
         //GIVEN
         val mockitoException = MockitoException("Unknown Error")
         Mockito.`when`(profService.getFoodDetail(1)).thenThrow(mockitoException)
+
         //WHEN
         val fetchedFoodDetail = foodsRemoteDataSource.fetchFoodDetail(1)
+
         //THEN
         assert(fetchedFoodDetail.message == "Unknown Error")
     }
 
     @Test
     fun `Given FoodDetail When fetchFoodDetail returns Server Error`() = runBlocking {
+
         //GIVEN
         Mockito.`when`(profService.getFoodDetail(1))
             .thenReturn(Response.error(500, "".toResponseBody()))
+
         //WHEN
         val fetchedFoodDetail =foodsRemoteDataSource.fetchFoodDetail(1)
+
         //THEN
         assert(fetchedFoodDetail.message == "Unknown Error")
     }

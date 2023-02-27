@@ -20,6 +20,7 @@ class SplashViewModelTest : BaseViewModelTest(){
 
     @Test
     fun `Given output When load returns Success`() = runBlockingMainTest {
+
         //WHEN
         splashViewModel.load()
 

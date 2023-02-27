@@ -39,6 +39,7 @@ class FoodDataCentralRepositoryImplTest {
 
     @Test
     fun `Given Foods When fetchFoods returns Success`() = runBlocking {
+
         //GIVEN
         val givenFoods = getDummyFoods()
         val givenFoodsOutput = Output.success(givenFoods)
@@ -56,6 +57,7 @@ class FoodDataCentralRepositoryImplTest {
 
     @Test
     fun `Given FoodDetail When fetchFoodDetail returns Success`() = runBlocking {
+
         //GIVEN
         val givenFoodDetail = getDummyFoodDetail()
         val givenFoodDetailOutput = Output.success(givenFoodDetail)

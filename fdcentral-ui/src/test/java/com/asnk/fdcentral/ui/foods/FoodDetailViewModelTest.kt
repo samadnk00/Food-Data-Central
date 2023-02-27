@@ -24,6 +24,7 @@ class FoodDetailViewModelTest : BaseViewModelTest(){
 
     @Test
     fun `Given FoodDetail when fetchFoodDetail should return Success`() = runBlockingMainTest {
+
         //GIVEN
         val flowQuestions = flowOf(Output.success(getDummyFoodDetail()))
 

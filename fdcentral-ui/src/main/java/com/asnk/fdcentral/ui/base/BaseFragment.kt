@@ -14,12 +14,12 @@ import com.google.android.material.snackbar.Snackbar
 abstract class BaseFragment : Fragment() {
 
     private var snackBar: Snackbar? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setStatusBarColor()
         subscribeUi()
     }
-
 
     /**
      * Set a status bar color to this fragment.
