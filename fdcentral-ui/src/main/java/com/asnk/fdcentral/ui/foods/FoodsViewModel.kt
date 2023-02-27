@@ -16,8 +16,8 @@ import javax.inject.Inject
 class FoodsViewModel @Inject constructor(
     private val foodListUseCase: FoodListUseCase) : BaseViewModel() {
 
-    private val _starsList = MutableLiveData<Output<List<FoodEntry>>>()
-    val foodsList: LiveData<Output<List<FoodEntry>>> = _starsList
+    private val _foodList = MutableLiveData<Output<List<FoodEntry>>>()
+    val foodsList: LiveData<Output<List<FoodEntry>>> = _foodList
 
     init {
         fetchFoods()
@@ -30,7 +30,7 @@ class FoodsViewModel @Inject constructor(
 
         viewModelScope.launch {
             foodListUseCase.execute().collect {
-                _starsList.value = it
+                _foodList.value = it
             }
         }
     }

@@ -37,7 +37,7 @@ class FoodsFragment : BaseFragment() {
     override fun subscribeUi() {
         binding?.let {
             it.swipeRefresh.applyTheme()
-            foodAdapter = FoodAdapter(arrayListOf(), onStarClick)
+            foodAdapter = FoodAdapter(arrayListOf(), onFoodItemClick)
             it.rvQuestions.adapter = foodAdapter
             it.swipeRefresh.setOnRefreshListener {
                 foodsViewModel.fetchFoods()
@@ -66,9 +66,9 @@ class FoodsFragment : BaseFragment() {
     }
 
     /**
-     * @property onStarClick to handle the Food item click.
+     * @property onFoodItemClick to handle the Food item click.
      */
-    private val onStarClick: (food: FoodEntry, view: View) -> Unit =
+    private val onFoodItemClick: (food: FoodEntry, view: View) -> Unit =
         { food, view ->
             val extras = FragmentNavigatorExtras(
                 view to food.image
