@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.asnk.fdcentral.domain.model.FoodDetailEntry" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_action_title"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:text="@string/food_detail"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:background="@color/splashBackground"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/app_name"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.3"
+            android:contentDescription="@string/app_name"
+            app:isSmallerImage="@{false}"
+            android:transitionName="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_action_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_default_food_24" />
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/go_back"
+            android:focusable="true"
+            android:padding="@dimen/dimen_8dp"
+            android:layout_marginLeft="@dimen/dimen_4dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_action_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:maxLines="3"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:gravity="center"
+            android:text="@{item.dataType}"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/planePrimaryTextColor"
+            app:layout_constraintTop_toBottomOf="@id/tv_action_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/app_name" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:layout_marginStart="@dimen/dimen_15dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_contents"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="@dimen/dimen_16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_header_title">
+
+                <ImageView
+                    android:id="@+id/profPic"
+                    android:layout_width="@dimen/dimen_200dp"
+                    android:layout_height="@dimen/dimen_200dp"
+                    android:contentDescription="@string/app_name"
+                    app:isSmallerImage="@{true}"
+                    app:layout_collapseMode="parallax"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_default_food_24" />
+
+                <TextView
+                    android:id="@+id/tv_data_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_32dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:text="@{item.foodClass}"
+                    android:textAppearance="?attr/textAppearanceButton"
+                    android:textColor="@color/planePrimaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profPic"
+                    tools:text="title" />
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:background="@color/planeSecondaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_data_type"
+                    tools:text="Professor" />
+
+                <TextView
+                    android:id="@+id/tv_class_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:text="@string/label_class"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planeSecondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@id/tv_class"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_line"
+                    app:layout_constraintWidth_percent="0.4"
+                    tools:text="Class" />
+
+                <TextView
+                    android:id="@+id/tv_class"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@{item.foodClass}"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planePrimaryTextColor"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_class_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_class_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_class_label"
+                    app:layout_constraintWidth_percent="0.6"
+                    tools:text="Class value" />
+
+                <TextView
+                    android:id="@+id/tv_date_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_pub_date"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planeSecondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@id/tv_publication_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_class"
+                    app:layout_constraintWidth_percent="0.4"
+                    tools:text="Date" />
+
+                <TextView
+                    android:id="@+id/tv_publication_date"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@{item.publicationDate}"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planePrimaryTextColor"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_date_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_date_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_date_label"
+                    app:layout_constraintWidth_percent="0.6"
+                    tools:text="Publication Date" />
+
+                <TextView
+                    android:id="@+id/tv_do_no_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_do_no"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planeSecondaryTextColor"
+                    app:layout_constraintBottom_toTopOf="@id/tv_food_title"
+                    app:layout_constraintEnd_toStartOf="@id/tv_do_no"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_publication_date"
+                    app:layout_constraintWidth_percent="0.4"
+                    tools:text="Do No" />
+
+                <TextView
+                    android:id="@+id/tv_do_no"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@{item.doiNumber}"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    android:textColor="@color/planePrimaryTextColor"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_do_no_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_do_no_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_do_no_label"
+                    app:layout_constraintWidth_percent="0.6"
+                    tools:text="Male" />
+
+                <TextView
+                    android:id="@+id/tv_food_title_label"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@string/label_title"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planeSecondaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_do_no"
+                    app:layout_constraintWidth_percent="0.5"
+                    tools:text="Status" />
+
+                <TextView
+                    android:id="@+id/tv_food_title"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@{item.title}"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="@color/planePrimaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_title_label"
+                    app:layout_constraintWidth_percent="0.5"
+                    tools:text="Alive" />
+
+                <TextView
+                    android:id="@+id/tv_abstract_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_abstract"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_15dp"
+                    android:textAppearance="?attr/textAppearanceButton"
+                    android:textColor="@color/planeSecondaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_title"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_abstract"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/planePrimaryTextColor"
+                    android:text="@{item.description}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_abstract_label"/>
+
+                <TextView
+                    android:id="@+id/tv_study_design_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_study_design"
+                    android:gravity="left"
+                    android:layout_marginTop="@dimen/dimen_15dp"
+                    android:layout_marginBottom="@dimen/dimen_15dp"
+                    android:textAppearance="?attr/textAppearanceButton"
+                    android:textColor="@color/planeSecondaryTextColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_abstract"
+                    app:layout_constraintWidth_percent="0.5"
+                    tools:text="Study Design" />
+
+                <TextView
+                    android:id="@+id/tv_study_design"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.abstract}"
+                    android:textColor="@color/planePrimaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_study_design_label"
+                    tools:text="label study desi" />
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    android:id="@+id/loading"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_class" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Food Data Central</string>
+    <string name="label_foods" >Food Data Central</string>
+    <string name="label_pub_date" >Published on </string>
+    <string name="go_back">Go back</string>
+    <string name="label_class">Food Class</string>
+    <string name="label_do_no">Doi Number</string>
+    <string name="label_title">Title</string>
+    <string name="label_abstract">Abstract</string>
+    <string name="label_study_design">Study Design</string>
+    <string name="food_detail">Food Detail</string>
+
+</resources>
