@@ -24,6 +24,6 @@ Clean architecture means the overall design of the project. It’s the organizat
 
 **Screenshots**
 
-Spalsh screen             |  Home screen          |  detail screen
+Splash screen             |  Home screen          |  detail screen
 :-------------------------:|:-------------------------:|:-------------------------:
 ![This is an image](https://github.com/samadnk00/Food-Data-Central/blob/master/screenshots/Screenshot_1.jpg) | ![This is an image](https://github.com/samadnk00/Food-Data-Central/blob/master/screenshots/Screenshot_2.jpg)|![This is an image](https://github.com/samadnk00/Food-Data-Central/blob/master/screenshots/Screenshot_1.jpg)
