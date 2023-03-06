@@ -1,10 +1,10 @@
 package com.asnk.fdcentral.ui
 
-import com.asnk.fdcentral.domain.model.FoodDetailEntry
-import com.asnk.fdcentral.domain.model.FoodEntry
+import com.asnk.fdcentral.domain.model.FoodDetailEntity
+import com.asnk.fdcentral.domain.model.FoodItemEntity
 
 fun getDummyFoods() = listOf(
-    FoodEntry(
+    FoodItemEntity(
         fdcId = 1,
         description = "1",
         dataType = "1",
@@ -13,7 +13,7 @@ fun getDummyFoods() = listOf(
     )
 )
 
-fun getDummyFoodDetail() = FoodDetailEntry(
+fun getDummyFoodDetail() = FoodDetailEntity(
     fdcId =  1,
     description =  "1",
     publicationDate =  "1",

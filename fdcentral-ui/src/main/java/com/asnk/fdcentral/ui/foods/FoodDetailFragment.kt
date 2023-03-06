@@ -68,7 +68,7 @@ class FoodDetailFragment : BaseFragment() {
     class Args(val id: Int) {
 
         companion object {
-            const val ARG_ITEM = "FdCid"
+            private const val ARG_ITEM = "FdCid"
 
              fun fromBundle(bundle: Bundle?): Args {
                 if (bundle == null)

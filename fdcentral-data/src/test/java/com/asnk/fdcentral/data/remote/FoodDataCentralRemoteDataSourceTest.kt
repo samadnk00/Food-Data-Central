@@ -2,7 +2,7 @@ package com.asnk.fdcentral.data.remote
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.asnk.fdcentral.data.services.ApiService
-import com.asnk.fdcentral.getDummyFoodDetail
+import com.asnk.fdcentral.getDummyFoodDetailResponse
 import com.asnk.fdcentral.getDummyFoods
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -86,7 +86,7 @@ class FoodDataCentralRemoteDataSourceTest {
     fun `Given FoodDetail When fetchFoodDetail returns Success`() = runBlocking {
 
         //GIVEN
-        val givenFoodDetail = getDummyFoodDetail()
+        val givenFoodDetail = getDummyFoodDetailResponse()
         Mockito.`when`(profService.getFoodDetail(1)).thenReturn(Response.success(givenFoodDetail))
 
         //WHEN

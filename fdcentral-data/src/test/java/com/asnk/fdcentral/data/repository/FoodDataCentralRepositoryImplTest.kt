@@ -1,10 +1,12 @@
 package com.asnk.fdcentral.data.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.asnk.fdcentral.data.model.FoodDetailEntityMapper
+import com.asnk.fdcentral.data.model.FoodItemEntityMapper
 import com.asnk.fdcentral.data.remote.FoodDataCentralRemoteDataSource
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.domain.repository.FoodDataCentralRepository
-import com.asnk.fdcentral.getDummyFoodDetail
+import com.asnk.fdcentral.getDummyFoodDetailResponse
 import com.asnk.fdcentral.getDummyFoods
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
@@ -31,10 +33,15 @@ class FoodDataCentralRepositoryImplTest {
     @Mock
     lateinit var foodsRemoteDataSource: FoodDataCentralRemoteDataSource
 
+    @Mock
+    lateinit var foodItemMapper: FoodItemEntityMapper
+
+    @Mock
+    lateinit var foodDetailMapper: FoodDetailEntityMapper
 
     @Before
     fun setUp() {
-        foodsRepository = FoodDataCentralRepositoryImpl(foodsRemoteDataSource)
+        foodsRepository = FoodDataCentralRepositoryImpl(foodsRemoteDataSource, foodItemMapper, foodDetailMapper)
     }
 
     @Test
@@ -59,7 +66,7 @@ class FoodDataCentralRepositoryImplTest {
     fun `Given FoodDetail When fetchFoodDetail returns Success`() = runBlocking {
 
         //GIVEN
-        val givenFoodDetail = getDummyFoodDetail()
+        val givenFoodDetail = getDummyFoodDetailResponse()
         val givenFoodDetailOutput = Output.success(givenFoodDetail)
         val inputFlow = listOf(Output.loading(), Output.success(givenFoodDetailOutput))
         Mockito.`when`(foodsRemoteDataSource.fetchFoodDetail(1)).thenReturn(givenFoodDetailOutput)

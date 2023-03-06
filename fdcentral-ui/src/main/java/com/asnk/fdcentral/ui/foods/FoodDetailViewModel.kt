@@ -3,7 +3,7 @@ package com.asnk.fdcentral.ui.foods
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.asnk.fdcentral.domain.model.FoodDetailEntry
+import com.asnk.fdcentral.domain.model.FoodDetailEntity
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.domain.usecase.FoodDetailUseCase
 import com.asnk.fdcentral.ui.base.BaseViewModel
@@ -16,8 +16,8 @@ import javax.inject.Inject
 class FoodDetailViewModel @Inject constructor(
     private val foodDetailUseCase: FoodDetailUseCase) : BaseViewModel() {
 
-    private val _foodDetail = MutableLiveData<Output<FoodDetailEntry>>()
-    val foodDetail: LiveData<Output<FoodDetailEntry>> = _foodDetail
+    private val _foodDetail = MutableLiveData<Output<FoodDetailEntity>>()
+    val foodDetail: LiveData<Output<FoodDetailEntity>> = _foodDetail
 
     /**
      * Method to fetch the food data.

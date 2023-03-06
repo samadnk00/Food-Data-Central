@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.asnk.fdcentral.domain.model.FoodDetailEntry" />
+            type="com.asnk.fdcentral.domain.model.FoodDetailEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.asnk.fdcentral.domain.model.FoodEntry
+import com.asnk.fdcentral.domain.model.FoodItemEntity
 import com.asnk.fdcentral.ui.databinding.ItemFoodBinding
 import com.asnk.fdcentral.ui.widgets.setOnSafeClickListener
 
@@ -16,8 +16,8 @@ import com.asnk.fdcentral.ui.widgets.setOnSafeClickListener
  * @property onStarClick is the item click listener.
  */
 class FoodAdapter(
-    private val list: ArrayList<FoodEntry>,
-    private val onStarClick: (details: FoodEntry, view: View) -> Unit
+    private val list: ArrayList<FoodItemEntity>,
+    private val onStarClick: (details: FoodItemEntity, view: View) -> Unit
 ) : RecyclerView.Adapter<FoodAdapter.FoodHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodHolder {
@@ -35,7 +35,7 @@ class FoodAdapter(
     /**
      * Method to update the data set of adapter.
      */
-    fun update(newList: List<FoodEntry>) {
+    fun update(newList: List<FoodItemEntity>) {
         list.clear()
         list.addAll(newList)
         notifyItemRangeChanged(0, list.size)
@@ -52,11 +52,11 @@ class FoodAdapter(
         /**
          * Method to bind data to layout.
          */
-        fun bind(item: FoodEntry) {
-            binding.item = item
+        fun bind(itemEntity: FoodItemEntity) {
+            binding.item = itemEntity
             binding.position = adapterPosition
             binding.root.setOnSafeClickListener {
-                onStarClick.invoke(item, binding.profPic)
+                onStarClick.invoke(itemEntity, binding.profPic)
             }
         }
     }

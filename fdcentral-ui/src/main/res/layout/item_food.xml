@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.asnk.fdcentral.domain.model.FoodEntry" />
+            type="com.asnk.fdcentral.domain.model.FoodItemEntity" />
 
         <variable
             name="position"

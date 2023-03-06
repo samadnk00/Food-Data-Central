@@ -11,7 +11,7 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 
-class FoodDetailViewModelTest : BaseViewModelTest(){
+class FoodDetailEntityViewModelTest : BaseViewModelTest(){
 
     @Mock
     private lateinit var foodDetailUseCase: FoodDetailUseCase

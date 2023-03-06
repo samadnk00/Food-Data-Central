@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.asnk.fdcentral.domain.model.FoodEntry
+import com.asnk.fdcentral.domain.model.FoodItemEntity
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.ui.R
 import com.asnk.fdcentral.ui.base.BaseFragment
@@ -68,7 +68,7 @@ class FoodsFragment : BaseFragment() {
     /**
      * @property onFoodItemClick to handle the Food item click.
      */
-    private val onFoodItemClick: (food: FoodEntry, view: View) -> Unit =
+    private val onFoodItemClick: (foodEntity: FoodItemEntity, view: View) -> Unit =
         { food, view ->
             val extras = FragmentNavigatorExtras(
                 view to food.image

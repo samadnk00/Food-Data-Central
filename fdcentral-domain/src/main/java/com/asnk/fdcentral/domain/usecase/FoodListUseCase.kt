@@ -1,6 +1,6 @@
 package com.asnk.fdcentral.domain.usecase
 
-import com.asnk.fdcentral.domain.model.FoodEntry
+import com.asnk.fdcentral.domain.model.FoodItemEntity
 import com.asnk.fdcentral.domain.model.Output
 import kotlinx.coroutines.flow.Flow
 
@@ -12,5 +12,5 @@ interface FoodListUseCase {
     /**
      * UseCase Method to fetch the foods from Data Layer
      */
-    suspend fun execute(): Flow<Output<List<FoodEntry>>>
+    suspend fun execute(): Flow<Output<List<FoodItemEntity>>>
 }

@@ -1,6 +1,6 @@
 package com.asnk.fdcentral.domain.usecase
 
-import com.asnk.fdcentral.domain.model.FoodEntry
+import com.asnk.fdcentral.domain.model.FoodItemEntity
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.domain.repository.FoodDataCentralRepository
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +13,7 @@ import javax.inject.Inject
 internal class FoodListUseCaseImpl @Inject constructor(
     private val foodDataCentralRepository: FoodDataCentralRepository) : FoodListUseCase {
 
-    override suspend fun execute(): Flow<Output<List<FoodEntry>>> {
+    override suspend fun execute(): Flow<Output<List<FoodItemEntity>>> {
         return foodDataCentralRepository.fetchFoods()
     }
 }

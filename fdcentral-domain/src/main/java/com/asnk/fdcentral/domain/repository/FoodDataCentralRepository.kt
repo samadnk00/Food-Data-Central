@@ -1,7 +1,7 @@
 package com.asnk.fdcentral.domain.repository
 
-import com.asnk.fdcentral.domain.model.FoodDetailEntry
-import com.asnk.fdcentral.domain.model.FoodEntry
+import com.asnk.fdcentral.domain.model.FoodDetailEntity
+import com.asnk.fdcentral.domain.model.FoodItemEntity
 import com.asnk.fdcentral.domain.model.Output
 import kotlinx.coroutines.flow.Flow
 
@@ -14,11 +14,11 @@ interface FoodDataCentralRepository {
      * Method to fetch the Food list from Repository
      * @return Flow of Outputs with food list
      */
-    suspend fun fetchFoods(): Flow<Output<List<FoodEntry>>>
+    suspend fun fetchFoods(): Flow<Output<List<FoodItemEntity>>>
 
     /**
      * Method to fetch the Food list from Repository
      * @return Flow of Outputs with food list
      */
-    suspend fun fetchFoodDetail(foodId: Int): Flow<Output<FoodDetailEntry>>
+    suspend fun fetchFoodDetail(foodId: Int): Flow<Output<FoodDetailEntity>>
 }
