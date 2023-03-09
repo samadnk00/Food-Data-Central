@@ -20,13 +20,6 @@ class FoodDetailFragment : BaseFragment<FragmentFoodDetailBinding>(
     private val foodDetailViewModel: FoodDetailViewModel by viewModels()
     private val foodItem by lazy { Args.fromBundle(arguments) }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(binding) {
-            root
-        }
-    }
-
     override fun subscribeUi() {
 
         binding?.btnBack?.setOnClickListener {
