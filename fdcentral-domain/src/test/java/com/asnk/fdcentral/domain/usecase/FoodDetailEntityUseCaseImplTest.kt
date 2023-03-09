@@ -4,11 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.domain.repository.FoodDataCentralRepository
 import com.asnk.fdcentral.getDummyFoodDetail
-import com.asnk.fdcentral.getDummyFoods
-import junit.framework.TestCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -28,6 +25,7 @@ class FoodDetailEntityUseCaseImplTest {
 
     @Mock
     private lateinit var foodsRepository: FoodDataCentralRepository
+
     private lateinit var foodUseCase: FoodDetailUseCase
 
     @Before
@@ -46,6 +44,6 @@ class FoodDetailEntityUseCaseImplTest {
         val outputFlow = foodUseCase.execute(1)
 
         //THEN
-        assert(outputFlow == inputFlow)
+        assert(Output.success(outputFlow) == Output.success(inputFlow))
     }
 }

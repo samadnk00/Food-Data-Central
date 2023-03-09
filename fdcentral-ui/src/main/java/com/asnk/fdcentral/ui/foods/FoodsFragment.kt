@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.asnk.fdcentral.domain.model.FoodItemEntity
 import com.asnk.fdcentral.domain.model.Output
@@ -16,19 +15,15 @@ import com.asnk.fdcentral.ui.widgets.applyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FoodsFragment : BaseFragment() {
+class FoodsFragment : BaseFragment<FragmentListFoodsBinding>(
+    FragmentListFoodsBinding::inflate) {
 
     private val foodsViewModel: FoodsViewModel by viewModels()
-    private var binding: FragmentListFoodsBinding? = null
     private lateinit var foodAdapter: FoodAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = FragmentListFoodsBinding.inflate(inflater, container, false).let {
-        binding = it
-        with(it) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
             headerTitle = getString(R.string.label_foods)
             root
         }
@@ -69,16 +64,12 @@ class FoodsFragment : BaseFragment() {
      * @property onFoodItemClick to handle the Food item click.
      */
     private val onFoodItemClick: (foodEntity: FoodItemEntity, view: View) -> Unit =
-        { food, view ->
-            val extras = FragmentNavigatorExtras(
-                view to food.image
-            )
+        { food, _ ->
+
             findNavController().navigate(
                 R.id.food_to_details,
                 FoodDetailFragment.Args(food.fdcId).toBundle(),
                 null,
-                extras
             )
         }
-
 }

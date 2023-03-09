@@ -3,8 +3,7 @@ package com.asnk.fdcentral.domain.usecase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.domain.repository.FoodDataCentralRepository
-import com.asnk.fdcentral.getDummyFoods
-import junit.framework.TestCase
+import com.asnk.fdcentral.getDummyFoodsResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
@@ -38,14 +37,14 @@ class FoodListUseCaseImplTest {
     fun `Given Foods When UseCase fetchFoods returns Success`() = runBlocking {
 
         //GIVEN
-        val inputFlow = flowOf(Output.success(getDummyFoods()))
+        val inputFlow = flowOf(Output.success(getDummyFoodsResponse()))
         Mockito.`when`(foodsRepository.fetchFoods()).thenReturn(inputFlow)
 
         //WHEN
-        val output = foodUseCase.execute().toList()
+        val output = foodUseCase.execute()
 
         //THEN
-        assert(output[0].data?.size == 1)
+        assert(Output.success(output) == Output.success(inputFlow))
     }
 
 }

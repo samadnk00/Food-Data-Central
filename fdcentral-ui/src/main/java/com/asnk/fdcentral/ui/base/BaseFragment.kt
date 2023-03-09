@@ -1,8 +1,11 @@
 package com.asnk.fdcentral.ui.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.asnk.fdcentral.ui.R
 import com.google.android.material.snackbar.Snackbar
 
@@ -11,9 +14,26 @@ import com.google.android.material.snackbar.Snackbar
  * Base class for all Fragments
  */
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment <viewBinding: ViewBinding>(
+    private val bindingInflater: (inflater: LayoutInflater)-> viewBinding
+): Fragment() {
 
     private var snackBar: Snackbar? = null
+    private var _binding: viewBinding? = null
+
+    val binding: viewBinding
+        get() = _binding as viewBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = bindingInflater.invoke(inflater)
+        if (_binding == null)
+            throw IllegalArgumentException("Binding can not be null")
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,4 +85,5 @@ abstract class BaseFragment : Fragment() {
     protected fun hideError() {
         snackBar?.dismiss()
     }
+
 }

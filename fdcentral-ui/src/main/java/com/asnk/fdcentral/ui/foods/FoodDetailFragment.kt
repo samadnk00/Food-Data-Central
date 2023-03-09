@@ -1,6 +1,5 @@
 package com.asnk.fdcentral.ui.foods
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,20 +14,15 @@ import com.asnk.fdcentral.ui.databinding.FragmentFoodDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FoodDetailFragment : BaseFragment() {
+class FoodDetailFragment : BaseFragment<FragmentFoodDetailBinding>(
+    FragmentFoodDetailBinding::inflate) {
 
     private val foodDetailViewModel: FoodDetailViewModel by viewModels()
-    private var binding: FragmentFoodDetailBinding? = null
     private val foodItem by lazy { Args.fromBundle(arguments) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = FragmentFoodDetailBinding.inflate(inflater,
-        container, false).let {
-        binding = it
-        with(it) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
             root
         }
     }

@@ -10,7 +10,7 @@ import javax.inject.Inject
 * Implementation of Food DETAIL UseCase
 * @param foodDataCentralRepository the foods repository object
 */
-internal class FoodDetailUseCaseImpl @Inject constructor(
+class FoodDetailUseCaseImpl @Inject constructor(
     private val foodDataCentralRepository: FoodDataCentralRepository) : FoodDetailUseCase {
 
     override suspend fun execute(foodId: Int): Flow<Output<FoodDetailEntity>> {

@@ -18,6 +18,7 @@ import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
 
@@ -29,18 +30,18 @@ class FoodDataCentralRepositoryImplTest {
     val testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
 
     private lateinit var foodsRepository: FoodDataCentralRepository
+    private lateinit var foodItemMapper: FoodItemEntityMapper
+    private lateinit var foodDetailMapper: FoodDetailEntityMapper
 
     @Mock
     lateinit var foodsRemoteDataSource: FoodDataCentralRemoteDataSource
 
-    @Mock
-    lateinit var foodItemMapper: FoodItemEntityMapper
 
-    @Mock
-    lateinit var foodDetailMapper: FoodDetailEntityMapper
 
     @Before
     fun setUp() {
+        foodItemMapper = FoodItemEntityMapper()
+        foodDetailMapper = FoodDetailEntityMapper()
         foodsRepository = FoodDataCentralRepositoryImpl(foodsRemoteDataSource, foodItemMapper, foodDetailMapper)
     }
 
@@ -50,16 +51,18 @@ class FoodDataCentralRepositoryImplTest {
         //GIVEN
         val givenFoods = getDummyFoods()
         val givenFoodsOutput = Output.success(givenFoods)
-        val inputFlow = listOf(Output.loading(), Output.success(givenFoodsOutput))
+        val inputFlow = listOf(Output.loading(), Output.success(givenFoods))
+        val mappedInputFlow = inputFlow[1].data?.let { foodItemMapper.mapToList(it) }
         Mockito.`when`(foodsRemoteDataSource.fetchFoods()).thenReturn(givenFoodsOutput)
 
         //WHEN
         val outputFlow = foodsRepository.fetchFoods().toList()
+        val mappedOutputFlow = outputFlow[1].data
 
         //THEN
         assert(outputFlow.size == 2)
         assert(inputFlow[0] == outputFlow[0])
-        assert(inputFlow[1] == outputFlow[1])
+        assert(mappedInputFlow == mappedOutputFlow)
     }
 
     @Test
@@ -68,14 +71,15 @@ class FoodDataCentralRepositoryImplTest {
         //GIVEN
         val givenFoodDetail = getDummyFoodDetailResponse()
         val givenFoodDetailOutput = Output.success(givenFoodDetail)
-        val inputFlow = listOf(Output.loading(), Output.success(givenFoodDetailOutput))
+        val inputFlow = listOf(Output.loading(), Output.success(givenFoodDetail))
+        val mappedInputFlow = inputFlow[1].data?.let { foodDetailMapper.mapToEntity(it) }
         Mockito.`when`(foodsRemoteDataSource.fetchFoodDetail(1)).thenReturn(givenFoodDetailOutput)
 
         //WHEN
-        val outputFlow = foodsRepository.fetchFoodDetail(1)
+        val mappedOutputFlow = foodsRepository.fetchFoodDetail(1).toList()[1].data
 
         //THEN
-        assert(inputFlow == outputFlow)
+        assert(mappedInputFlow == mappedOutputFlow)
     }
 
 }

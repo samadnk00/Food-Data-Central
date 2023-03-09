@@ -68,6 +68,7 @@ dependencies {
     testImplementation testing.unitTestingMockitoCore
 
     testImplementation testing.unitTestingJunit
+
     androidTestImplementation  testing.uiTestingJunit
     androidTestImplementation  testing.uiTestingEspresso
 }

@@ -78,12 +78,12 @@ ext {
     ]
 
     testing = [
-            unitTestingCore       : "androidx.arch.core:core-testing:$testCore",
-            unitTestingCoroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$testKotlinxCoroutines",
-            unitTestingMockitoCore: "org.mockito:mockito-core:$testMockitoCore",
-            unitTestingJunit      : "junit:junit:$testJunit",
-            uiTestingJunit        : "androidx.test.ext:junit:$androidTestJunit",
-            uiTestingEspresso     : "androidx.test.espresso:espresso-core:$androidTestEspressoCore"
+            unitTestingCore         : "androidx.arch.core:core-testing:$testCore",
+            unitTestingCoroutines   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$testKotlinxCoroutines",
+            unitTestingMockitoCore  : "org.mockito:mockito-core:$testMockitoCore",
+            unitTestingJunit        : "junit:junit:$testJunit",
+            uiTestingJunit          : "androidx.test.ext:junit:$androidTestJunit",
+            uiTestingEspresso       : "androidx.test.espresso:espresso-core:$androidTestEspressoCore"
     ]
     others = [
             picasso: "com.squareup.picasso:picasso:$picassoVersion"

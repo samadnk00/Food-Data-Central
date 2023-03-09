@@ -7,24 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.asnk.fdcentral.ui.base.BaseFragment
 import com.asnk.fdcentral.domain.model.Output
 import com.asnk.fdcentral.ui.R
+import com.asnk.fdcentral.ui.base.BaseFragment
 import com.asnk.fdcentral.ui.databinding.FragmentSplashBinding
 
-class SplashFragment : BaseFragment() {
-
-    private var binding: FragmentSplashBinding? = null
+class SplashFragment : BaseFragment<FragmentSplashBinding>(
+    FragmentSplashBinding::inflate) {
 
     private val splashViewModel by viewModels<SplashViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = FragmentSplashBinding.inflate(inflater, container, false).let {
-        binding = it
-        with(it) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
             viewModel = splashViewModel
             lifecycleOwner = this@SplashFragment
             root
@@ -52,10 +47,5 @@ class SplashFragment : BaseFragment() {
             )
             findNavController().navigate(R.id.splash_to_foods, null, null, extras)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding = null
     }
 }

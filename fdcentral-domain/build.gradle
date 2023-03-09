@@ -17,7 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.resources.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -33,6 +33,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    sourceSets {
+        main {
+            resources {
+                srcDirs 'src/main/assets', 'src/main/src/resources'
+            }
+        }
     }
 }
 
@@ -51,6 +58,9 @@ dependencies {
 
     testImplementation testing.unitTestingCore
     testImplementation testing.unitTestingJunit
+
     androidTestImplementation  testing.uiTestingJunit
     androidTestImplementation  testing.uiTestingEspresso
+
+
 }
